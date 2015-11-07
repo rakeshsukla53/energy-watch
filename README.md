@@ -2,7 +2,7 @@
 
 How to run this program and check output:
 
-Step 1 - git clone https://github.com/rakeshsukla53/energy-watch
+Step 1 - git clone `https://github.com/rakeshsukla53/energy-watch`
 
 Step 2 - Navigate to energy-watch directory
 
