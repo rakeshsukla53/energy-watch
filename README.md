@@ -19,7 +19,9 @@ Step 6 - Enter the correct city and country code, and then you check an output f
 
 Enter the input values `city` and `country`
 ![link](https://s3.amazonaws.com/rakeshsukla/Selection_120.png)
+
 Output file will be generated in the same folder `source`
 ![link](https://s3.amazonaws.com/rakeshsukla/Selection_121.png)
+
 Content of output file will look like this
 ![link](https://s-media-cache-ak0.pinimg.com/originals/5d/fb/a4/5dfba45178dc1796c2ae871cef88294b.png)
