@@ -57,7 +57,7 @@ if __name__ == '__main__':
         # logic for finding out the values of HDD and CDD
         if overall_avg_day > 65:
             HDD = 0
-            CDD = 65 - overall_avg_day
+            CDD = overall_avg_day - 65
         else:
             CDD = 0
             HDD = 65 - overall_avg_day
