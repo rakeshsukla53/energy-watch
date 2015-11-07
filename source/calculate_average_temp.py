@@ -35,11 +35,9 @@ def calculate_degree(city, country):
     return result
 
 if __name__ == '__main__':
-
     # assumption is that you will enter correct city and country
     city = raw_input("Enter the name of the city")
     country = raw_input("Enter the name of the country")
-
     avg_values = calculate_degree(city, country)
     # divide the whole list in 5 equal parts which basically shows the average of 5 future days
     avg_temp_day = [avg_values[i:i + 8] for i in range(0, len(avg_values), 8)]
@@ -49,6 +47,7 @@ if __name__ == '__main__':
     # column header
     writer.writerow(('DAY', 'HDD', 'CDD', 'CITY', 'COUNTRY'))
     count = 1
+
     for line in avg_temp_day:
         # this is the overall average of the day
         overall_avg_day = reduce(lambda x, y: x + y, line) / float(len(line))
@@ -64,6 +63,5 @@ if __name__ == '__main__':
             HDD = 65 - overall_avg_day
         # writing the result to the file
         writer.writerow((date, HDD, CDD, city.upper(), country.upper()))
-
     f.close()
 
