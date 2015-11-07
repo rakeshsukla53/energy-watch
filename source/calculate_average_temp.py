@@ -9,8 +9,9 @@ import datetime
 API_KEY = 'e85ba5b4f3c4366380d0f7c6fe8df683'
 
 def calculate_degree(city, country):
-    ''' Calculate heating degree days(HDD)'''
+    ''' Calculate Heating Degree Days (HDD), Cooling Degree Days (CDD)'''
     url = 'http://api.openweathermap.org/data/2.5/forecast?q={},{}&units=imperial&appid={}'.format(city, country, API_KEY)
+    # today's date in YY-MM-DD format
     datetime_now = strftime("%Y-%m-%d", gmtime())
     r = requests.get(url)
     data = json.loads(r.text)['list']
@@ -23,10 +24,11 @@ def calculate_degree(city, country):
             #capture result for the next five days
             temp_max = line['main']['temp_max']
             temp_min = line['main']['temp_min']
+            #Calculating the average of 3 hr period
             avg = float(temp_max + temp_min)/2
             result.append(avg)
 
-    #ignoring the first value since that is not needed
+    #ignoring the first value since that is not needed. It points to present day
     result.pop(0)
     return result
 
@@ -40,7 +42,7 @@ if __name__ == '__main__':
     print avg_temp_day
     f = open('{}.txt'.format(city), 'wt')
     writer = csv.writer(f)
-    writer.writerow(('DAY', 'HDD', 'CDD'))
+    writer.writerow(('DAY', 'HDD', 'CDD', 'CITY', 'COUNTRY'))
     count = 1
     for line in avg_temp_day:
         overall_avg_day = np.mean(line)
@@ -54,7 +56,7 @@ if __name__ == '__main__':
             CDD = 0
             HDD = 65 - overall_avg_day
 
-        writer.writerow((date, HDD, CDD))
+        writer.writerow((date, HDD, CDD, city.upper(), country.upper()))
 
     f.close()
 
